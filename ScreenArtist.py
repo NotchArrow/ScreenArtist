@@ -1,12 +1,13 @@
 import pygame  # canvas
 import pyautogui  # mouse location and pixel color
 import shutil  # file management
+import os  # file management
 import datetime  # datestamp for fileversions
 import random  # randomdrawing
 from ScreenArtistConfig import *  # settings from config
 
 sysDrawingX = 0
-sysDrawingY = 00
+sysDrawingY = 0
 
 # pygame setup
 pygame.init()
@@ -224,6 +225,7 @@ if saving:
 
 		time = datetime.datetime.now()
 		time = str(time.month) + "-" + str(time.day) + "-" + str(time.year) + "_" + str(time.hour) + "-" + str(time.minute) + "-" + str(time.second) + "_"
+		os.makedirs("./" + versionsFolder, exist_ok=True)
 		shutil.copyfile(saveFile, versionsFolder + "/" + time + saveFile)
 
 pygame.quit()
