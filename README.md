@@ -10,6 +10,8 @@ Pygame: https://pypi.org/project/pygame/
 
 Pyautogui: https://pypi.org/project/PyAutoGUI/
 
+Requirements File: https://github.com/NotchArrow/ScreenArtist/blob/main/requirements.txt
+
 # Features
 
 All of the features listed below are customizable in the config file.
