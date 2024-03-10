@@ -6,7 +6,7 @@ drawing = True  # Whether drawing with your mouse is enabled
 randomDrawing = False  # If pixels should be drawn in random locations on the screen, independent of the mouse
 
 systematicDrawing = False  # If pixels should be drawn in rows
-sysDrawingDirection = 'vertical'  # 'horizontal', 'vertical', defaults to vertical
+sysDrawingDirection = "vertical"  # "horizontal", "vertical", defaults to vertical
 
 refreshRate = 60  # How many times per second new pixels are drawn, Affects performance and how quickly the image changes
 
@@ -19,6 +19,9 @@ loadFile = "Save1.txt"  # Relative filepath of the loadfile, Leaving blank will 
 
 saveVersions = True  # If you want to save versions with timestamps as a timeline, Saving must be enabled
 versionsFolder = "PreviousVersions"  # Relative filepath of the folder to put these versions in
+
+timeLapseEnabled = True  # If the program should have a hotkey to quickly redraw everything for a satisfying effect, Saving must be enabled
+timeLapseHotkey = "SPACE"  # The hotkey the program should use to start the timelapse, examples: "space", "q", "SPACE", "Q"
 
 
 # Canvas Settings

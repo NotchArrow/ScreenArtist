@@ -9,6 +9,11 @@ from ScreenArtistConfig import *  # settings from config
 sysDrawingX = 0
 sysDrawingY = 0
 
+timeLapse = False
+timeLapseHotkey = timeLapseHotkey.lower()
+if timeLapseHotkey == "space":
+	timeLapseHotkey = "SPACE"
+
 # pygame setup
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -47,7 +52,9 @@ while running:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			running = False
-
+		if event.type == pygame.KEYDOWN:
+			if event.key == getattr(pygame, "K_" + timeLapseHotkey):
+				timeLapse = True
 
 	# mouse drawing
 	if drawing:
@@ -137,6 +144,7 @@ while running:
 		except:
 			pass
 
+
 	# drawing pixels in rows
 	if systematicDrawing:
 		try:
@@ -199,6 +207,26 @@ while running:
 
 		except:
 			pass
+
+
+	# if a timelapse is being done
+	if timeLapse:
+		screen.fill(backgroundColor)
+		pixel_array = pygame.PixelArray(screen)
+		i = 0
+		for item in listToSave:
+			i += 1
+			if "pixel_array" in item:
+				exec(item)
+
+			else:
+				exec("pixel_array" + item)
+
+			if i >= 25:
+				i = 0
+				pygame.display.update()
+		
+	timeLapse = False
 
 
 	# display refresh
