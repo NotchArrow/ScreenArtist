@@ -30,3 +30,4 @@ All of the features listed below are customizable in the config file.
 * Past versions
 * Background color
 * Canvas size
+* Timelapse
