@@ -9,10 +9,11 @@ from ScreenArtistConfig import *  # settings from config
 sysDrawingX = 0
 sysDrawingY = 0
 
-timeLapse = False
-timeLapseHotkey = timeLapseHotkey.lower()
-if timeLapseHotkey == "space":
-	timeLapseHotkey = "SPACE"
+if timeLapseEnabled:
+	timeLapse = False
+	timeLapseHotkey = timeLapseHotkey.lower()
+	if timeLapseHotkey == "space":
+		timeLapseHotkey = "SPACE"
 
 # pygame setup
 pygame.init()
@@ -53,7 +54,7 @@ while running:
 		if event.type == pygame.QUIT:
 			running = False
 		if event.type == pygame.KEYDOWN:
-			if event.key == getattr(pygame, "K_" + timeLapseHotkey):
+			if event.key == getattr(pygame, "K_" + timeLapseHotkey) and timeLapseEnabled == True:
 				timeLapse = True
 
 	# mouse drawing
@@ -209,24 +210,25 @@ while running:
 			pass
 
 
-	# if a timelapse is being done
-	if timeLapse:
-		screen.fill(backgroundColor)
-		pixel_array = pygame.PixelArray(screen)
-		i = 0
-		for item in listToSave:
-			i += 1
-			if "pixel_array" in item:
-				exec(item)
+	if timeLapseEnabled:
+		# if a timelapse is being done
+		if timeLapse:
+			screen.fill(backgroundColor)
+			pixel_array = pygame.PixelArray(screen)
+			i = 0
+			for item in listToSave:
+				i += 1
+				if "pixel_array" in item:
+					exec(item)
 
-			else:
-				exec("pixel_array" + item)
+				else:
+					exec("pixel_array" + item)
 
-			if i >= 25:
-				i = 0
-				pygame.display.update()
-		
-	timeLapse = False
+				if i >= int(timeLapseSpeed):
+					i = 0
+					pygame.display.update()
+			
+		timeLapse = False
 
 
 	# display refresh

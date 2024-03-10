@@ -22,6 +22,7 @@ versionsFolder = "PreviousVersions"  # Relative filepath of the folder to put th
 
 timeLapseEnabled = True  # If the program should have a hotkey to quickly redraw everything for a satisfying effect, Saving must be enabled
 timeLapseHotkey = "SPACE"  # The hotkey the program should use to start the timelapse, examples: "space", "q", "SPACE", "Q"
+timeLapseSpeed = "25"  # Speed of the timelapse, higher values will go faster
 
 
 # Canvas Settings
